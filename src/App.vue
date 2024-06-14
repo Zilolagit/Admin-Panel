@@ -169,6 +169,44 @@ function logOut() {
   }, 500);
 
 }
+
+import { onBeforeMount } from 'vue';
+
+// Add this within your setup script
+onBeforeMount(() => {
+  updateSelectedKeys();
+});
+
+router.afterEach(() => {
+  updateSelectedKeys();
+});
+
+function updateSelectedKeys() {
+  const currentPath = route.path;
+  const menuItem = items.find(item => item.path === currentPath);
+  if (menuItem) {
+    state.selectedKeys = [menuItem.key];
+  } else {
+    state.selectedKeys = [];
+  }
+}
+
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  const storedKeys = localStorage.getItem('selectedKeys');
+  if (storedKeys) {
+    state.selectedKeys = JSON.parse(storedKeys);
+  }
+});
+
+watch(
+  () => state.selectedKeys,
+  (newValue) => {
+    localStorage.setItem('selectedKeys', JSON.stringify(newValue));
+  }
+);
+
 </script>
 
 <style scoped lang="scss">
