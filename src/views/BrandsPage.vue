@@ -1,13 +1,13 @@
 <template>
-    <h2>Brands</h2>
+    <h2>Brand</h2>
   </template>
   
   <script>
   export default {
-  
+
   }
   </script>
   
-  <style>
+  <style scoped lang="scss">
   
   </style>
