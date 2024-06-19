@@ -109,7 +109,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99;
     &__container{
         background: linear-gradient(90deg, #001529, #011e41, #007c94, #062E60);
         padding:50px 20px;
@@ -410,6 +409,181 @@
     }
 }
 
+
+.modal__add-cars{
+    width: 100%;
+    top:0;
+    left:0;
+    background: rgb(0, 0, 0,0.5);
+    position: fixed;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__container{
+        background: linear-gradient(90deg, #001529, #011e41, #007c94, #062E60);
+        padding:50px 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        gap:10px;
+        background-size: 400% 400%;
+        animation: gradient 10s ease infinite;
+        transform: translate3d(0, 0, 0);
+        box-shadow: 0px 0px 5px 5px #a4ebec;
+        h3{
+            color:white;
+        }
+        
+        .closed{
+            position: absolute;
+            top:-15px;
+            font-size: 20px;
+            color:white;
+            right:-15px;
+         font-family: Arial, Helvetica, sans-serif;
+         cursor: pointer;
+         background: linear-gradient(90deg, #001529, #011e41, #007c94, #062E60, #011e41, #007c94, #062E60, #011e41, #007c94, #062E60);
+         border-radius: 12px;
+         padding: 5px 10px;
+         filter: drop-shadow(2px 2px 35px #b10492);
+         background-size: 400% 400%;
+         animation: gradient 10s ease infinite;
+         transform: translate3d(0, 0, 0);
+         box-shadow: 0px 0px 5px 5px #a4ebec;
+         transition: 1s;
+         &:hover{
+            background: linear-gradient(90deg, #ffffff, #01755d, #00268f, #157eff, #1c0003, #007c94, #00fff7, #011e41, #007c94, #062E60);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+            transform: translate3d(0, 0, 0) scale(1.1);
+            box-shadow: 0px 0px 5px 5px #a4ebec;
+            color:#00fff7
+         }
+        }
+        .forma{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap:20px;
+            padding:5px;
+              color:white;
+            &__card{ 
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+            img{
+                width: 100px;
+                height: 80px;
+                margin:0 auto;
+            }
+          
+             label{
+               font-size: 16px;
+                display: flex;
+                gap:10px;
+             
+                margin-left: 5px;
+                span{
+                    color:rgb(255, 0, 115);
+                    margin-top: 2px;
+                }
+             }
+                select{
+                    width: 200px;
+                    padding:10px;
+                    color:black;
+                    background: rgba(202, 201, 201, 0.5);
+                    border: none;
+                    border-radius: 8px;
+                    border: none;
+                    outline: none;
+               
+                    &::placeholder{
+                        color:black;
+                    }
+                }
+                input{
+                    width: 200px;
+                    padding:10px;
+                    color:black;
+                    background: rgba(202, 201, 201, 0.5);
+                    border: none;
+                    border-radius: 8px;
+                    border: none;
+                    outline: none;
+               
+                    &::placeholder{
+                        color:black;
+                    }
+                }
+                .colorinput{
+                    width: 100%;
+                    height: 100%;
+                }
+                .chek{
+                    width: 50px;
+                
+                }
+                .btn-add{
+                    padding:10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    background: linear-gradient(90deg, #ffffff,#4e6dc3);
+                    border-radius: 8px;
+                    background-size: 400% 400%;
+                    animation: gradient 10s ease infinite;
+               
+                    &:hover{
+                        transition: 1s;
+                        background: linear-gradient(90deg, #005826,#00fbff);
+                        border-radius: 8px;
+                        background-size: 400% 400%;
+                        animation: gradient 2s ease infinite;
+                    }
+                }
+            }
+            .cars__btn-add{
+                    padding:10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    background: linear-gradient(90deg, #ffffff,#29c17a);
+                    border-radius: 8px;
+                    background-size: 400% 400%;
+                    animation: gradient 10s ease infinite;
+               
+                    &:hover{
+                        transition: 1s;
+                        background: linear-gradient(90deg, #005826,#00fbff);
+                        border-radius: 8px;
+                        background-size: 400% 400%;
+                        animation: gradient 2s ease infinite;
+                    }
+               
+            }
+            .cars__btn-cancel{
+                padding:10px;
+                font-size: 16px;
+                text-align: center;
+                cursor: pointer;
+                background: linear-gradient(90deg, #c09292,#438682);
+                border-radius: 8px;
+                background-size: 400% 400%;
+                animation: gradient 10s ease infinite;
+                &:hover{
+                    transition: 1s;
+                    background: linear-gradient(90deg, #68416e,#00fbff);
+                    border-radius: 8px;
+                    background-size: 400% 400%;
+                    animation: gradient 2s ease infinite;
+                }
+           
+        }
+           }
+         
+    }
+}
 
 @keyframes gradient {
     0% {
