@@ -164,19 +164,16 @@ const addProduct = async () => {
   formData.append("location_id", inputlocation.value);
   formData.append("inclusive", inputinclusive.value);
   formData.append("cover", inputimgcover.value);
-  await axiosCustom.post(`cars`,formData, {
+  try {
+    await axiosCustom.post(`cars`,formData, {
     })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.success) {
         fletchcard();
-        addmodal(false)
-        alert("Muvaffaqiyatlik")
-      }
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
+        addmodal(false);
+
+  } 
+  catch{
+    addmodal(false);
+  }
 };
 
 //~~~~~~~~~~~~~~~~~~~~~ edit Product~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -306,16 +303,16 @@ const editChangeProduct = async () => {
   formData.append("location_id", data.value.location_id);
   formData.append("inclusive", data.value.inclusive);
   formData.append("cover", data.value.cover);
-  await axiosCustom.put(`cars/${idtovar.value}`,formData, {
+  try {
+    await axiosCustom.put(`cars/${idtovar.value}`,formData, {
     })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.success) {
         editmodal(false);
         fletchcard();
-      }
-    })
-    .catch((error) => {});
+  } 
+  catch{
+
+  }
+
 };
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~DELET PRODUCT~~~~~~~~~~~~~~~~~~~~~~~~
@@ -548,7 +545,7 @@ const deleteProduct = async ()=>{
             >
             <input
               class="colorinput"
-              type="color"
+              type="text"
               value=""
               v-model="inputcolor"
             />
@@ -770,7 +767,7 @@ const deleteProduct = async ()=>{
 
           <br />
 
-          <button class="cars__btn-add" type="addProduct" @click="addProduct()">Add</button>
+          <button class="cars__btn-add" type="addProduct">Add</button>
           <div class="cars__btn-cancel" @click="addmodal(false)">cancel</div>
         </form>
       </div>
@@ -862,7 +859,7 @@ const deleteProduct = async ()=>{
             </select>
           </div>
 
-          <!-- <div class="forma__card">
+          <div class="forma__card">
             <label for="">
               <span>*</span>
               <p>Location</p></label
@@ -876,7 +873,7 @@ const deleteProduct = async ()=>{
             <option value="" disabled selected hidden>{{ location[indextovar]?.name }}</option>
             <option  v-for="item in location" :key="item" :value='item.id'>{{ item?.name }}</option>  
             </select>
-          </div> -->
+          </div>
 
           <div class="forma__card">
             <label for="">
@@ -901,7 +898,7 @@ const deleteProduct = async ()=>{
             >
             <input
               class="colorinput"
-              type="color"
+              type="text"
               value=""
               v-model="inputcolor"
 
@@ -1134,7 +1131,7 @@ const deleteProduct = async ()=>{
           <br />
 
           <button class="cars__btn-add" type="editChangeProduct" @click="editChangeProduct()">editt</button>
-          <button class="cars__btn-cancel" >cancel</button>
+          <div class="cars__btn-cancel" @click="editmodal(false)" >cancel</div>
         </form>
       </div>
     </div>
@@ -1144,6 +1141,14 @@ const deleteProduct = async ()=>{
 
 
 <style lang="scss" scoped>
+button{
+  border:none;
+  outline: none;
+}
+input{
+  border: none;
+  outline: none;
+}
 .brandpages{
     width: 100%;
     &__container{
